@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link href ="styles.css" rel = "stylesheet">
 </head>
 <body>
@@ -47,12 +45,28 @@
     </div>
 </div>
 
-<!-- Bootstrap JS, Popper.js, and jQuery -->
-{% comment %} <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> {% endcomment %}
-
-<!-- Custom JS -->
-<script src="script.js">
+<script>
+    function clearScreen() {
+        document.getElementById("screen").value = "";
+    }
+    
+    function appendCharacter(character) {
+        document.getElementById("screen").value += character;
+    }
+    
+    function backspace() {
+        let screen = document.getElementById("screen").value;
+        document.getElementById("screen").value = screen.slice(0, -1);
+    }
+    
+    function calculate() {
+        try {
+            let screen = document.getElementById("screen").value;
+            document.getElementById("screen").value = eval(screen);
+        } catch (e) {
+            alert("Invalid Expression");
+        }
+    }
+</script>
 </body>
 </html>
